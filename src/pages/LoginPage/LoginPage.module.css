@@ -1,6 +1,7 @@
-import LoginForm from 'components/LoginForm/LoginForm';
-
-const LoginPage = () => {
-  return <LoginForm />;
-};
-export default LoginPage;
+.container {
+  background-image: url(../../images/bg.jpg);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  padding: 150px 0;
+}

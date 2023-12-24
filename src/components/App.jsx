@@ -1,5 +1,5 @@
 import { lazy } from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
 import { Provider } from 'react-redux'; 
 import { store } from '../redux/store';
 
@@ -17,7 +17,6 @@ export const App = () => {
   return (
     <Provider store={store}>
       <div>
-        <Router>
             <Routes>
               <Route path="/" element={<Layout />}>
                 <Route index element={<HomePage />} />
@@ -26,7 +25,6 @@ export const App = () => {
                 <Route path="/contacts" element={<ContactsPage />} />
               </Route>
             </Routes>
-        </Router>
       </div>
     </Provider>
   );

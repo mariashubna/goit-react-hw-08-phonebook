@@ -5,11 +5,12 @@ import { selectUser } from '../../redux/auth/selectors';
 
 export const Header = () => {
   const { name } = useSelector(selectUser);
+  const isLoggedIn = Boolean(name);
 
   return (
     <header>
-      <Navigation />
-      {name && <UserMenu />}
+      <Navigation isLoggedIn={isLoggedIn} />
+      {isLoggedIn && <UserMenu />}
     </header>
   );
 };

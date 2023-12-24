@@ -37,9 +37,10 @@ const ClientName = () => {
   };
 
   return (
-    <form className={css.form} onSubmit={handleSubmit}>
+    <div className={css.container}>
+      <form className={css.form} onSubmit={handleSubmit}>
       <label className={css.label}>
-        Name:
+        Name:</label>
         <input
           className={css.input}
           type="text"
@@ -50,9 +51,9 @@ const ClientName = () => {
           onChange={handleInputChange}
           required
         />
-      </label>
+      
       <label className={css.label}>
-        Number:
+        Number:</label>
         <input
           className={css.input}
           type="tel"
@@ -63,11 +64,12 @@ const ClientName = () => {
           onChange={handleInputChange}
           required
         />
-      </label>
+      
       <button className={css.btn} type="submit" disabled={isLoading}>
         {isLoading ? 'Adding...' : 'Add Contact'}
       </button>
     </form>
+    </div>
   );
 };
 

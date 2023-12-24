@@ -1,0 +1,17 @@
+@import url('https://fonts.googleapis.com/css2?family=Rubik+Doodle+Shadow&display=swap');
+
+.container {
+  text-align: center;
+  background-image: url(../../images/bg.jpg);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  padding: 200px 0;
+}
+
+.title {
+  font-size: 100px;
+  margin-bottom: 20px;
+  color: #333;
+  font-family: 'Rubik Doodle Shadow', cursive;
+}

@@ -1,34 +1,4 @@
-import { Filter } from 'components/Filter/Filter';
-import { ContactList } from 'components/ContactList/ContactList';
-import { Modal } from 'components/Modal/Modal';
-import { useState } from 'react';
-
-const ContactsPage = () => {
-  const [isModalOpen, setIsModalOpen] = useState(false);
-
-  const handleOpenModal = () => {
-    setIsModalOpen(true);
-  };
-
-  const closeModal = () => {
-    setIsModalOpen(false);
-  };
-
-  return (
-    <Wrapper>
-      <Filter />
-      <div>
-        <h2>Contacts</h2>
-        <button
-          type="button"
-          aria-label="Add Contact"
-          onClick={handleOpenModal} >
-        </button>
-      </div>
-      <ContactList />
-      {isModalOpen && <Modal closeModal={closeModal} />}
-    </Wrapper>
-  );
-};
-
-export default ContactsPage;
+.container {
+  padding: 120px 0 70px;
+  background: linear-gradient(to bottom , #ffffff, #f0f0da, #e4ef80);
+}

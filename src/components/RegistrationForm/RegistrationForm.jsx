@@ -1,6 +1,8 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { register } from '../../redux/auth/authSlice';
+import css from './RegistrationForm.module.css'
+
 
 export const RegistrationForm = () => {
   const dispatch = useDispatch();
@@ -20,34 +22,34 @@ export const RegistrationForm = () => {
   };
 
   return (
-    <div>
-      <h2>Sign up</h2>
-      <form onSubmit={handleSubmit}>
-        <label>Name:</label>
-        <input
+    <div className={css.container}>
+      <h2 className={css.title}>Sign up</h2>
+      <form className={css.form} onSubmit={handleSubmit}>
+        <label className={css.label}>Name:</label>
+        <input className={css.input}
           type="text"
           name="name"
           value={formData.name}
           onChange={handleInputChange}
           required
         />
-        <label>Email:</label>
-        <input
+        <label className={css.label}>Email:</label>
+        <input className={css.input}
           type="email"
           name="email"
           value={formData.email}
           onChange={handleInputChange}
           required
         />
-        <label>Password:</label>
-        <input
+        <label className={css.label}>Password:</label>
+        <input className={css.input}
           type="password"
           name="password"
           value={formData.password}
           onChange={handleInputChange}
           required
         />
-        <button type="submit">Register</button>
+        <button className={css.button} type="submit">Continue</button>
       </form>
     </div>
   );

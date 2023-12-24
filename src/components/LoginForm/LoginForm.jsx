@@ -1,8 +1,11 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { login } from '../../redux/auth/authSlice';
+import { useNavigate } from 'react-router-dom';
+import css from './LoginForm.module.css'
 
-export  const LoginForm = () => {
+export const LoginForm = () => {
+  const navigate = useNavigate();
   const dispatch = useDispatch();
   const [formData, setFormData] = useState({
     email: '',
@@ -13,17 +16,22 @@ export  const LoginForm = () => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    dispatch(login(formData));
+    try {
+      await dispatch(login(formData));
+      navigate('/contacts');
+    } catch (error) {
+      console.error(error);
+    }
   };
 
   return (
-    <div>
-      <h2>Login</h2>
-      <form onSubmit={handleSubmit}>
-        <label>Email:</label>
-        <input
+    <div className={css.container}>
+      <h2 className={css.title}> Sign in </h2>
+      <form className={css.form} onSubmit={handleSubmit}>
+        <label className={css.label}>Email:</label>
+        <input className={css.input}
           type="email"
           name="email"
           value={formData.email}
@@ -31,16 +39,15 @@ export  const LoginForm = () => {
           required
         />
         <label>Password:</label>
-        <input
+        <input className={css.input}
           type="password"
           name="password"
           value={formData.password}
           onChange={handleInputChange}
           required
         />
-        <button type="submit">Login</button>
+        <button className={css.button} type="submit">Continue</button>
       </form>
     </div>
   );
 };
-

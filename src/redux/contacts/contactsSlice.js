@@ -44,8 +44,8 @@ const initialState = {
           state.error = action.error.message;
         })
         .addCase(deleteContact.fulfilled, (state, action) => {
-          state.items = state.items.filter((contact) => contact.id !== action.payload);
-        });
+  state.items = state.items.filter((contact) => contact.id !== action.payload);
+});
     },
   });
   
@@ -53,17 +53,17 @@ const initialState = {
 
 
 
-export const fetchContacts = createAsyncThunk(
-  'contacts/fetchAll',
-  async (_, thunkAPI) => {
-    try {
-      const response = await axios.get('/contacts');
-      return response.data;
-    } catch (error) {
-      return thunkAPI.rejectWithValue(error.message);
+  export const fetchContacts = createAsyncThunk(
+    'contacts/fetchAll',
+    async (_, thunkAPI) => {
+      try {
+        const response = await axios.get('/contacts');
+        return response.data;
+      } catch (error) {
+        return thunkAPI.rejectWithValue(error.message);
+      }
     }
-  }
-);
+  );
 
 export const addContact = createAsyncThunk(
   'contacts/addContact',
