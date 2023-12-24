@@ -1,15 +1,12 @@
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { addContact } from '../../redux/contactsSlice';
+import { addContact } from '../../redux/contacts/contactsSlice';
 import css from './ClientName.module.css';
 
 const ClientName = () => {
   const dispatch = useDispatch();
   const isLoading = useSelector((state) => state.contacts.isLoading);
   const allContacts = useSelector((state) => state.contacts.items);
-  
-
-  const user = useSelector((state) => state.auth.user);
 
   const [formData, setFormData] = useState({
     name: '',
@@ -32,7 +29,7 @@ const ClientName = () => {
     const { name, number } = formData;
 
     if (!isLoading && isNameUnique(name)) {
-      dispatch(addContact({ userId: user.id, newContact: { name, number } }));
+      dispatch(addContact({ name, number }));
       setFormData({ name: '', number: '' });
     } else {
       alert('Contact with this name already exists.');
@@ -41,7 +38,6 @@ const ClientName = () => {
 
   return (
     <form className={css.form} onSubmit={handleSubmit}>
-      {/* Input fields and form structure */}
       <label className={css.label}>
         Name:
         <input
@@ -49,6 +45,8 @@ const ClientName = () => {
           type="text"
           name="name"
           value={formData.name}
+          pattern="[A-Za-z]{2,15} [A-Za-z]{2,15}"
+          placeholder="Diana Klein"
           onChange={handleInputChange}
           required
         />
@@ -60,6 +58,8 @@ const ClientName = () => {
           type="tel"
           name="number"
           value={formData.number}
+          pattern="\+?\d{1,4}?[.\-\s]?\(?\d{1,3}?\)?[.\-\s]?\d{1,4}[.\-\s]?\d{1,4}[.\-\s]?\d{1,9}"
+          placeholder="777-77-77"
           onChange={handleInputChange}
           required
         />

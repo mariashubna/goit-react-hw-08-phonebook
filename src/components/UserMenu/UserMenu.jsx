@@ -1,20 +1,21 @@
-import React from 'react';
-import { useDispatch } from 'react-redux';
-import { logoutUser } from '../../redux/authSlice';
+import { useDispatch, useSelector } from 'react-redux';
+import { selectUser } from '../../redux/auth/selectors';
+import { logout } from '../../redux/auth/authSlice';
 
-const UserMenu = () => {
+export const UserMenu = () => {
+  const { name } = useSelector(selectUser);
   const dispatch = useDispatch();
 
   const handleLogout = () => {
-    dispatch(logoutUser());
+    dispatch(logout());
   };
 
   return (
     <div>
-      <p>mango@mail.com</p>
-      <button onClick={handleLogout}>Logout</button>
+      <p> {name} </p>
+      <button type="button" aria-label="Logout" onClick={handleLogout}>
+        Logout
+      </button>
     </div>
   );
 };
-
-export default UserMenu;

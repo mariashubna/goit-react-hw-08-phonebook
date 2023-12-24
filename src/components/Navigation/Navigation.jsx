@@ -1,23 +1,34 @@
-import { Link } from 'react-router-dom';
-import UserMenu from '../UserMenu/UserMenu';
+import React from 'react';
 import { useSelector } from 'react-redux';
+import { NavLink } from 'react-router-dom';
 
-const Navigation = () => {
-  const authState = useSelector((state) => state.auth);
-  const user = authState ? authState.user : null;
-
+export const Navigation = () => {
+  const isLoggedIn = useSelector(state => state.auth.isLoggedIn);
+  
   return (
     <nav>
-      {user ? (
-        <UserMenu />
-      ) : (
-        <>
-          <Link to="/register">Register</Link>
-          <Link to="/login">Login</Link>
-        </>
-      )}
+      <ul>
+        <li>
+          <NavLink to="/">Home</NavLink>
+        </li>
+
+        {!isLoggedIn && (
+          <>
+            <li>
+              <NavLink to="/register">Register</NavLink>
+            </li>
+            <li>
+              <NavLink to="/login">Login</NavLink>
+            </li>
+          </>
+        )}
+
+        {isLoggedIn && (
+          <li>
+            <NavLink to="/contacts">Contacts</NavLink>
+          </li>
+        )}
+      </ul>
     </nav>
   );
 };
-
-export default Navigation;

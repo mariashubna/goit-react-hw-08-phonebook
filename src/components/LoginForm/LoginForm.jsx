@@ -1,11 +1,10 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { registerUser } from '../../redux/authSlice';
+import { login } from '../../redux/auth/authSlice';
 
-const Register = () => {
+export  const LoginForm = () => {
   const dispatch = useDispatch();
   const [formData, setFormData] = useState({
-    name: '',
     email: '',
     password: '',
   });
@@ -16,21 +15,13 @@ const Register = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    dispatch(registerUser(formData));
+    dispatch(login(formData));
   };
 
   return (
     <div>
-      <h2>Register</h2>
+      <h2>Login</h2>
       <form onSubmit={handleSubmit}>
-        <label>Name:</label>
-        <input
-          type="text"
-          name="name"
-          value={formData.name}
-          onChange={handleInputChange}
-          required
-        />
         <label>Email:</label>
         <input
           type="email"
@@ -47,10 +38,9 @@ const Register = () => {
           onChange={handleInputChange}
           required
         />
-        <button type="submit">Register</button>
+        <button type="submit">Login</button>
       </form>
     </div>
   );
 };
 
-export default Register;
