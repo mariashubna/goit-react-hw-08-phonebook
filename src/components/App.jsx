@@ -1,4 +1,4 @@
-import { lazy, Suspense } from 'react';
+import { lazy } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { Provider } from 'react-redux'; 
 import { store } from '../redux/store';
@@ -18,7 +18,6 @@ export const App = () => {
     <Provider store={store}>
       <div>
         <Router>
-          <Suspense fallback={<div>Loading...</div>}>
             <Routes>
               <Route path="/" element={<Layout />}>
                 <Route index element={<HomePage />} />
@@ -27,7 +26,6 @@ export const App = () => {
                 <Route path="/contacts" element={<ContactsPage />} />
               </Route>
             </Routes>
-          </Suspense>
         </Router>
       </div>
     </Provider>
