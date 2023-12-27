@@ -4,8 +4,9 @@ import { useSelector } from 'react-redux';
 import { selectUser } from '../../redux/auth/selectors';
 
 export const Header = () => {
-  const { name } = useSelector(selectUser);
-  const isLoggedIn = Boolean(name);
+  const user = useSelector(selectUser);
+
+  const isLoggedIn = Boolean(user);
 
   return (
     <header>
