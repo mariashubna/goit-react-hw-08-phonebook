@@ -2,8 +2,6 @@ import { lazy } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import { Provider } from 'react-redux'; 
 import { store } from '../redux/store';
-
-// import css from './App.module.css';
 import Layout from './Layout/Layout'; 
 
 const HomePage = lazy(() => import('../pages/HomePage/HomePage'));
